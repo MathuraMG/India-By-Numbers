@@ -26,8 +26,6 @@ function setup(){
   fill(200, 100, 100);
   // Only redraw the point when the map change and not every frame.
   myMap.onChange(drawPoint);
-  // select(".battle").hide();
-  // select(".heading__year").html(select("#yearSlider").value());
 }
 
 // We moved everything to this custom function that
@@ -35,15 +33,14 @@ function setup(){
 function drawPoint(){
   clear();
   selectAll(".locations").forEach(location => location.hide());
-  console.log(selectedBattle);
   if(selectedBattle) {
     console.log("Selected : " + selectedBattle);
     getYearOfBattle();
-    selectedBattle='';
   }
-  // select(".heading__year").html(select("#yearSlider").value());
   filteredBattles = filterData(document.getElementById("yearSlider").value);
-  for(var j =0; j<filteredBattles.length;j++) {
+    if(selectedBattle===filteredBattles[j].name) {
+      mapLocations[filteredBattles[j].id].updateDetails(filteredBattles[j].name,filteredBattles[j].dates, filteredBattles[j].war, filteredBattles[j].link);
+    }
     if(filteredBattles[j].coord[0]) {
       var temp = myMap.latLngToPixel(filteredBattles[j].coord[0], filteredBattles[j].coord[1]);
       mapLocations[filteredBattles[j].id].updateLocation(temp.x,temp.y);

@@ -86,7 +86,7 @@ html, body {
   background: #474748; }
 
 #mappa {
-  width: 70% !important;
+  width: 80% !important;
   height: 80% !important;
   margin-left: 2rem; }
 
@@ -95,7 +95,19 @@ html, body {
   z-index: 1000; }
 
 #yearSlider {
-  width: 80%; }
+  width: 100%; }
+
+#map-canvas {
+  width: 70%; }
+
+.battle {
+  width: 20%;
+  height: 90%;
+  display: block;
+  float: left; }
+
+.map__container {
+  padding: 0 2rem; }
 
 .nav__list {
   display: flex;

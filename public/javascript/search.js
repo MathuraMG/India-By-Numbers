@@ -22,8 +22,6 @@ $( document ).ready(function() {
       });
     });
     if(event.code == 'Enter') {
-      console.log('hi');
-      console.log(searchValues)
       if(searchValues.indexOf($("#tags").val())>-1) {
         renderMap($("#tags").val());
       }

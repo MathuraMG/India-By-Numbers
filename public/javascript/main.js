@@ -4,7 +4,7 @@ function showPage(index) {
   $('.main__container').toggleClass('main__container--compressed');
   $('.nav__list').toggleClass('nav__list--compressed');
   $('.main__input').toggleClass('main__input--compressed');
-  $('.main__subtitle').toggleClass('main__subtitle--compressed');
+  $('.main__subtitle').toggleClass('main__input--compressed');
   let pageid = '#page-'+ index;
   $('.page').hide();
   $(pageid).show();
