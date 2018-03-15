@@ -19,8 +19,12 @@
   &__subtitle {
     color: $color-text-secondary;
     border-top: $color-text-primary solid 0.1rem;
+    &--compressed {
+      display: none;
+    }
   }
   &__input {
+    width: 40%;
     &-label {
       display: none;
     }
@@ -29,7 +33,7 @@
       border: $color-text-secondary solid .1rem;
       border-radius: 0.2rem;
       line-height: 2rem;
-      width: 40%;
+      width: 100%;
       padding: 0.5rem;
       font-size: 1rem;
       color: $color-text-primary;
@@ -48,6 +52,39 @@
         background-color: $color-back-primary;
       }
     }
+    &--compressed {
+      display: none;
+    }
 
+  }
+}
+
+.main--compressed {
+  height: 15%;
+}
+
+.main__container--compressed {
+  padding-bottom: 0;
+}
+
+.input {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  &__item {
+    list-style: none;
+    background-color: $color-back-secondary;
+    border: $color-text-secondary solid .1rem;
+    border-radius: 0.2rem;
+    line-height: 2rem;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: $color-text-primary;
+    & li:hover, li:focus {
+      background-color: $color-back-primary;
+    }
   }
 }

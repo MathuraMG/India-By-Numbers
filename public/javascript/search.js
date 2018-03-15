@@ -11,19 +11,30 @@ $( document ).ready(function() {
   $( "#tags" ).keyup(function() {
     let url = "http://localhost:3000/getResult?value=" + $( "#tags" ).val();
     $.getJSON( url , function( results ) {
-      console.log(results);
       searchValues = [];
       results.forEach(function(result) {
-        searchValues.push(result._source.name);
+        // $('.input__list').append(
+          searchValues.push(result._source.name ); //result._type says that it is battle - how to use this?
+      // );
       });
-      console.log(searchValues);
-      /* THIS IS NOT EFFICIENT - FIX THIS */
       $( "#tags" ).autocomplete({
-        source: searchValues,
-        classes: {
-          "ui-autocomplete": "main__input-choices"
-        }
+        source: searchValues
       });
     });
+    if(event.code == 'Enter') {
+      console.log('hi');
+      console.log(searchValues)
+      if(searchValues.indexOf($("#tags").val())>-1) {
+        renderMap($("#tags").val());
+      }
+    }
+    // checkIfSubmit
   });
 });
+
+function renderMap(id) {
+  selectedBattle = id;
+  console.log(id);
+  showPage(0);
+  drawPoint();
+}

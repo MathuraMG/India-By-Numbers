@@ -20,12 +20,11 @@ function getData(request, response) {
     size: 20,
     from: 0,
     query: {
-      match: {
-        name: {
-          query: request.query.value,
-          operator: "and",
-          fuzziness: 2
-        }
+      multi_match: {
+        query: request.query.value,
+        fields: ['name', 'year'],
+        operator: "and",
+        fuzziness: 2
       }
     }
   };

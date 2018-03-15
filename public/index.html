@@ -3,15 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>By Numbers</title>
-    <link rel="stylesheet" href="/styles/app.css">
+
+    <!-- p5 lib -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
+    <script src="https://unpkg.com/mappa-mundi/dist/mappa.min.js" type="text/javascript"></script>
+
+    <!-- jquery lib -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/styles/app.css">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+    <!-- local js -->
     <script type="text/javascript" src="javascript/search.js"></script>
+    <script type="text/javascript" src="javascript/main.js"></script>
+    <script type="text/javascript" src="javascript/maps.js"></script>
   </head>
 
   <body>
 
+    <div id='myContainer'></div>
     <section class="main">
       <div class="main__container">
         <h1 class="main__title">
@@ -23,7 +38,7 @@
         <h2 class="main__subtitle">
           A Data-Based Look at the British Colonial Rule in India
         </h2>
-        <div class="ui-widget main__input">
+        <div class="main__input">
           <label class="main__input-label" for="tags">Tags: </label>
           <input class="main__input-area" id="tags">
         </div>
@@ -33,45 +48,77 @@
     <nav class="nav">
       <ul class="nav__list">
         <li class="nav__item">
-          <a class="nav__link" href="">
-            Boundaries
-          </a>
+          <button class="nav__button" onclick="showPage(0)">
+            Battles
+          </button>
         </li>
         <li class="nav__item">
-          <a class="nav__link" href="">
+          <button class="nav__button" onclick="togglePage(1)">
             Maps
-          </a>
+          </button>
         </li>
         <li class="nav__item">
-          <a class="nav__link" href="">
+          <button class="nav__button" onclick="togglePage(2)">
             Boundaries
-          </a>
+          </button>
         </li>
         <li class="nav__item">
-          <a class="nav__link" href="">
+          <button class="nav__button" onclick="togglePage(3)">
             Acts
-          </a>
+          </button>
         </li>
     </nav>
 
     <!-- MAP PAGE -->
-    <section class="map__container">
-      <h2 class="map__title">
-        What Happened in India in <span class="map__title-year"> 1800 </span>
+    <section class="page map__container" id="page-0">
+
+      <h1 class="page__heading">
+        Battles in India in <span class="heading__year"></span>
+      </h1>
+      <h2 class="page__subheading">
+        Move the slider and click on the button to learn more about the battles
       </h2>
-      <div class="map__content">
-        <div class="map__image">
+      <input id="yearSlider" type="range" min="1700" max="1947" step="1" oninput="drawPoint()" onchange="drawPoint()" value="1857">
+      <datalist id="tickmarks">
+        <option value="0 to 20">0</option>
+        <option>20</option>
+        <option>40</option>
+        <option>60</option>
+        <option>80</option>
+        <option>100</option>
+      </datalist>
+
+      <section class="battle">
+        <h1 class="battle__name">Name</h1>
+        <div class="battle__details">
+          <h2 class="battle__war">War</h2>
+          <p class="battle__dates">Dates</p>
+          <a class="battle__link" target="_blank">Click here to learn more</a>
         </div>
-        <div class="map__text">
-          <h3 class="map-text__title">
+      </section>
+    </section>
+
+
+    <!-- ACTS PAGE -->
+    <section class="page acts__container" id="page-1">
+      <h2 class="acts__title">
+      ACTS!
+      </h2>
+      <div class="acts__content">
+        <div class="acts__image">
+        </div>
+        <div class="acts__text">
+          <h3 class="acts-text__title">
             Battle of Mangalore
           </h3>
-          <p class="map-text__content">
+          <p class="acts-text__content">
             Poured from a stubby 12-ounce brown bottle into a Belgian-style chalice, the beer appears a rich, semi-hazed, deep brown with ruddy hues; a creamy beige head dresses the top, with a wispy center and ringed lace. Malty aromatics make their way to the nose as soon as the bottle is cracked, full with toffee, fruit, soft spices, metallics, faint flora, earth, fresh roots, a bready yeast edge and a deep, spicy and warming alcohol. Lush feel on the palate, with creamy, smooth carbonation. Malt base is even, with the taste of dark overripe stone fruits, a distinct prune edge, and rounded juiciness, not overly sweet. Light charring in the background, some burnt sugars, a touch of orange blossom honey and some steeliness. Dry toward the finish, with a lingering alcohol warmth and spice, root and earth character, and a big yeasty smack at the very end.
           </p>
         </div>
       </div>
     </section>
+
+
 
   </body>
 </html>
